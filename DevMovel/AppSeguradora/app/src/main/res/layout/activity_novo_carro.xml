@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.root.seguradoraco.view.NovoCarroActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/LinearLayoutTopTxt"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="vertical"
+            android:paddingTop="5dp">
+
+            <TextView
+                android:id="@+id/txtInfoCarro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Informações do Carro"
+                android:textAlignment="center"
+                android:textSize="28sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/LinearLayoutConteudo"
+            android:layout_width="match_parent"
+            android:layout_height="391dp"
+            android:orientation="vertical"
+            android:paddingTop="30dp">
+
+            <TextView
+                android:id="@+id/txtPlacaDoCarro"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:text="Placa Do Carro"
+                android:textAlignment="textEnd"
+                android:textAllCaps="false"
+                android:textSize="20sp" />
+
+            <LinearLayout
+                android:id="@+id/LinearLayoutPlaca"
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:layout_marginBottom="20dp"
+                android:layout_marginLeft="60dp"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/etPlacaLetras"
+                    android:layout_width="30dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:capitalize="characters"
+                    android:ems="10"
+                    android:hint="AAA"
+                    android:inputType="textCapWords"
+                    android:maxLength="3"
+                    android:textAlignment="center"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/txtTracinho"
+                    android:layout_width="1dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="-"
+                    android:textAlignment="center"
+                    android:textSize="24sp" />
+
+                <EditText
+                    android:id="@+id/etPlacaNumeros"
+                    android:layout_width="30dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:hint="0000"
+                    android:inputType="numberDecimal"
+                    android:maxLength="4"
+                    android:textAlignment="center"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/txtMarca"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:text="Marca"
+                android:textAlignment="textEnd"
+                android:textSize="20sp" />
+
+            <Spinner
+                android:id="@+id/spnMarca"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="40dp"
+                android:layout_marginLeft="60dp" />
+
+            <TextView
+                android:id="@+id/txtModelo"
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:text="Modelo"
+                android:textAlignment="textEnd"
+                android:textSize="20sp" />
+
+            <Spinner
+                android:id="@+id/spnModelo"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="40dp"
+                android:layout_marginLeft="60dp" />
+
+            <TextView
+                android:id="@+id/txtAno"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="Ano"
+                android:textAlignment="textEnd"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/etAnoDoCarro"
+                android:layout_width="55dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="60dp"
+                android:ems="10"
+                android:hint="0000"
+                android:inputType="numberDecimal" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/LinearLayoutBotoes"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="bottom"
+            android:orientation="horizontal"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:paddingTop="20dp">
+
+            <Button
+                android:id="@+id/btnSalvar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Salvar" />
+
+            <Button
+                android:id="@+id/btnCancelar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Cancelar" />
+        </LinearLayout>
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>
