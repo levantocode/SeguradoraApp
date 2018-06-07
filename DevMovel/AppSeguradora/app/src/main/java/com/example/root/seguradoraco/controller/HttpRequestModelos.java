@@ -1,6 +1,8 @@
 package com.example.root.seguradoraco.controller;
 
 
+import com.example.root.seguradoraco.model.Modelo;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -18,77 +20,12 @@ public class HttpRequestModelos {
     private final String USER_AGENT = "Mozilla/5.0";
 
 
-    // HTTP GET request ID
-    public List<String> sendGetID() throws Exception {
-
-        //Creating Connection
-        URL url = new URL("http://fipeapi.appspot.com/api/1/carros/marcas.json");
-        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-
-
-        // optional default is GET
-        connection.setRequestMethod("GET");
-        //add request header
-        connection.setRequestProperty("User-Agent", USER_AGENT);
-
-
-        //Testing Connection
-        int responseCode = connection.getResponseCode();
-        System.out.println("\nSending 'GET' request to URL : " + url);
-        System.out.println("Response Code : " + responseCode);
-
-
-        //Reading Content
-        BufferedReader brIn =
-                new BufferedReader(new InputStreamReader(connection.getInputStream()));
-
-
-        //Getting Content
-        String inputLine;
-        StringBuffer sbDadosCru = new StringBuffer();
-
-        while ((inputLine = brIn.readLine()) != null) {
-            sbDadosCru.append(inputLine);
-        }
-        brIn.close();
-
-        //System.out.println(response.toString());
-
-        List<String> listaIDs = findAllIDs(new JSONArray(sbDadosCru.toString()));
-
-        return listaIDs;
-    }
-
-    public List<String> findAllIDs(JSONArray dadosCru) {
-
-        List<String> listaIDs = new LinkedList<String>();
-
-        try {
-            for (int i = 0; i < dadosCru.length(); i++) {
-                JSONObject jsonObj = dadosCru.getJSONObject(i);
-                listaIDs.add(jsonObj.getString("id"));
-            }
-        } catch (JSONException e) {
-            // handle exception
-        }
-
-
-        return listaIDs;
-    }
-
-
-
-
-
-
-
     // HTTP GET request
-    public List<String> sendGet() throws Exception {
+    public List<Modelo> sendGetModelos(int idMarca) throws Exception {
 
-        //Creating Connection
-        URL url = new URL("http://fipeapi.appspot.com/api/1/carros/marcas.json");
+
+        URL url = new URL("http://fipeapi.appspot.com/api/1/carros/veiculos/"+ idMarca +".json");
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-
 
         // optional default is GET
         connection.setRequestMethod("GET");
@@ -118,20 +55,28 @@ public class HttpRequestModelos {
 
         //System.out.println(response.toString());
 
-        List<String> listaModelosAchados = findAllModelos(new JSONArray(sbDadosCru.toString()));
+        List<Modelo> listaModelosAchados = findAllModelos(idMarca, new JSONArray(sbDadosCru.toString()));
 
         return listaModelosAchados;
     }
 
-    public List<String> findAllModelos(JSONArray dadosCru) {
 
-        List<String> listaModelosAchados = new LinkedList<String>();
+
+
+
+
+    public List<Modelo> findAllModelos(int idMarca, JSONArray dadosCru) {
+
+        List<Modelo> listaModelosAchados = new LinkedList<Modelo>();
 
         try {
             for (int i = 0; i < dadosCru.length(); i++) {
                 JSONObject jsonObj = dadosCru.getJSONObject(i);
-                listaModelosAchados.add(jsonObj.getString("model"));
+                //listaModelosAchados.add(jsonObj.getString("model"));
+                listaModelosAchados.add(new Modelo(idMarca, jsonObj.getString("key"),
+                                                         jsonObj.getString("name")));
             }
+
         } catch (JSONException e) {
             // handle exception
         }
@@ -139,4 +84,5 @@ public class HttpRequestModelos {
 
         return listaModelosAchados;
     }
+
 }

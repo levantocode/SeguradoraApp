@@ -1,47 +1,43 @@
 package com.example.root.seguradoraco.model;
 
 public class Modelo {
-    private int id;
+    private int idMarca;
     private String nome;
-    private String marca;
-    private String chave;
+    private String key;
 
 
+    public Modelo(int im, String n, String k) {
+        this.idMarca = im;
+        this.nome = n;
+        this.key = k;
+    }
 
     //Gets
-    public int getId(){
-        return this.id;
+    public int getIdMarca(){
+        return this.idMarca;
     }
 
     public String getNome(){
         return this.nome;
     }
 
-    public String getMarca(){
-        return this.marca;
-    }
-
-    public String getChave(){
-        return this.chave;
+    public String getKey(){
+        return this.key;
     }
 
 
 
     //Sets
-    public void setId(int i){
-        this.id = i;
+    public void setMarca(int im){
+        this.idMarca = im;
     }
 
     public void setNome(String n){
         this.nome = n;
     }
 
-    public void setMarca(String m){
-        this.marca = m;
-    }
-
-    public void setChave(String c){
-        this.chave = c;
+    public void setKey(String k){
+        this.key = k;
     }
 
 }

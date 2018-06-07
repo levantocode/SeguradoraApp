@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">LearnApp</string>
+    <string name="reset">Reset</string>
+    <string name="go">Go</string>
+    <string name="game_trainning">Game Trainning</string>
+    <string name="buying_temperature">Buying Temperature</string>
+    <string name="counts">Counts:</string>
+    <string name="_0">0</string>
+</resources>
