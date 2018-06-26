@@ -9,12 +9,15 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.example.root.seguradoraco.R;
 import com.example.root.seguradoraco.controller.HttpRequestMarcas;
 import com.example.root.seguradoraco.controller.HttpRequestModelos;
+import com.example.root.seguradoraco.controller.ListaCarros;
 import com.example.root.seguradoraco.controller.ListaMarcas;
 import com.example.root.seguradoraco.controller.ListaModelos;
+import com.example.root.seguradoraco.model.Carro;
 
 import java.util.List;
 
@@ -26,21 +29,25 @@ public class NovoCarroActivity extends AppCompatActivity {
 
     ListaMarcas  listaMarcas;
     ListaModelos listaModelos;
+    ListaCarros  listaCarros;
 
-    List<String> listaNomeTodosModelos;
 
+    TextView txtErro;
 
-    Button btnSalvar;
-    Button btnCancelar;
+    EditText etPlacaLetras;
+    EditText etPlacaNumeros;
+    EditText etAnoDoCarro;
 
     Spinner spnMarca;
     Spinner spnModelo;
     ArrayAdapter<String> dataAdapterMarca;
     ArrayAdapter<String> dataAdapterModelo;
 
-    EditText etPlacaLetras;
-    EditText etPlacaNumeros;
-    EditText etAnoDoCarro;
+    Button btnSalvar;
+    Button btnCancelar;
+
+
+
 
 
 
@@ -52,15 +59,19 @@ public class NovoCarroActivity extends AppCompatActivity {
 
         listaMarcas = new ListaMarcas(httpRequestMarcas);
 
-        btnSalvar   = (Button) findViewById(R.id.btnSalvar);
-        btnCancelar = (Button) findViewById(R.id.btnCancelar);
-
-        spnMarca  = (Spinner) findViewById(R.id.spnMarca);
-        spnModelo = (Spinner) findViewById(R.id.spnModelo);
+        txtErro = (TextView) findViewById(R.id.txtErro);
 
         etPlacaLetras  = (EditText) findViewById(R.id.etPlacaLetras);
         etPlacaNumeros = (EditText) findViewById(R.id.etPlacaNumeros);
         etAnoDoCarro   = (EditText) findViewById(R.id.etAnoDoCarro);
+
+        spnMarca  = (Spinner) findViewById(R.id.spnMarca);
+        spnModelo = (Spinner) findViewById(R.id.spnModelo);
+
+        btnSalvar   = (Button) findViewById(R.id.btnSalvar);
+        btnCancelar = (Button) findViewById(R.id.btnCancelar);
+
+
 
 
 
@@ -68,13 +79,8 @@ public class NovoCarroActivity extends AppCompatActivity {
 
 
         //Spinner Modelo
-
         dataAdapterModelo = new ArrayAdapter<String>(this,
                             android.R.layout.simple_spinner_item);
-
-
-
-
 
 
         //Spinner Marca
@@ -94,17 +100,16 @@ public class NovoCarroActivity extends AppCompatActivity {
                 int idItemSelecionado = listaMarcas.findIdMarcaByName(itemSelecionado);
 
                 listaModelos = new ListaModelos(httpRequestModelos, idItemSelecionado);
-                listaNomeTodosModelos = listaModelos.getNomeTodosModelos();
 
                 //Spinner Modelo
-                dataAdapterModelo.addAll(listaNomeTodosModelos);
+                dataAdapterModelo.addAll(listaModelos.getNomeTodosModelos());
                 dataAdapterModelo.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 spnModelo.setAdapter(dataAdapterModelo);
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parentView) {
-                // your code here
+                // nothing happens
             }
         });
 
@@ -116,6 +121,57 @@ public class NovoCarroActivity extends AppCompatActivity {
         btnCancelar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), MainActivity.class);
+                view.getContext().startActivity(intent);
+            }
+        });
+
+
+        btnSalvar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int tamanhoPlacaLetras  = etPlacaLetras.getText().length();
+                int tamanhoPlacaNumeros = etPlacaNumeros.getText().length();
+                int tamanhoAnoDoCarro   = etAnoDoCarro.getText().length();
+
+                int anoDoCarroEmNumeros = Integer.parseInt(etAnoDoCarro.getText().toString());
+
+
+
+                // Errors
+                if( tamanhoPlacaLetras != 3 || tamanhoPlacaNumeros != 3 ){
+                    txtErro.setText("Placa Invalida");
+
+                    if( tamanhoAnoDoCarro != 4 || anoDoCarroEmNumeros < 1800 ){
+                        txtErro.setText("Placa Inválida, Ano do Carro Inválido");
+                    }
+
+                    txtErro.setVisibility(View.VISIBLE);
+                }
+
+                if( tamanhoAnoDoCarro != 4 || anoDoCarroEmNumeros < 1800 ){
+                    txtErro.setText("Ano do Carro é Inválido");
+                }
+                // Fim Errors
+
+
+
+                String placaCompleta;
+                String selectedMarca;
+                String selectedModelo;
+
+                placaCompleta = etPlacaLetras.getText() + "-" + etPlacaNumeros.getText();
+                selectedMarca = spnMarca.getSelectedItem().toString();
+                selectedModelo = spnModelo.getSelectedItem().toString();
+
+
+
+                listaCarros.addCarro(new Carro(placaCompleta,
+                                                selectedMarca,
+                                                selectedModelo,
+                                                anoDoCarroEmNumeros));
+
+
                 Intent intent = new Intent(view.getContext(), MainActivity.class);
                 view.getContext().startActivity(intent);
             }

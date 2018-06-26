@@ -36,6 +36,14 @@
             android:paddingTop="30dp">
 
             <TextView
+                android:id="@+id/txtErro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="erro"
+                android:textColor="@android:color/holo_red_dark"
+                android:visibility="invisible" />
+
+            <TextView
                 android:id="@+id/txtPlacaDoCarro"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"

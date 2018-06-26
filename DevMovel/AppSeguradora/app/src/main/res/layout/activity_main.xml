@@ -30,70 +30,63 @@
             app:layout_constraintTop_toTopOf="parent" />
     </LinearLayout>
 
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/rlListaCarros"
+    <LinearLayout
+        android:id="@+id/LinearLayoutLista"
         android:layout_width="match_parent"
-        android:layout_height="391dp"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="63dp"
+        android:layout_height="370dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:gravity="start"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/LinearLayoutBotoes"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/LinearLayoutTituloLista">
 
-        <LinearLayout
-            android:id="@+id/LinearLayoutLista"
+        <TextView
+            android:id="@+id/txtListaPlaca"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:gravity="left"
-            android:orientation="vertical">
+            android:ellipsize="end"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/txtListaPlaca"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="61dp"
-                android:ellipsize="end"
-                android:gravity="center_vertical"
-                android:maxLines="1"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/txtMarcaModeloLista"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="top"
+            android:maxLines="1"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            app:layout_constraintEnd_toStartOf="@+id/txtQtdEventosLista"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtListaPlaca" />
 
-            <TableRow
-                android:id="@+id/trCarroLista"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:layout_marginLeft="20dp">
+        <TextView
+            android:id="@+id/txtQtdEventosLista"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            app:layout_constraintBaseline_toBaselineOf="@+id/txtMarcaModeloLista"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/txtMarcaModeloLista" />
 
-                <TextView
-                    android:id="@+id/txtListaMarcaModelo"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="28dp"
-                    android:gravity="top"
-                    android:maxLines="1"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    app:layout_constraintEnd_toStartOf="@+id/txtListaQtdEventos"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/txtListaPlaca" />
+        <ListView
+            android:id="@+id/lvCarros"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="vertical" />
 
-                <TextView
-                    android:id="@+id/txtListaQtdEventos"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:maxLines="1"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    app:layout_constraintBaseline_toBaselineOf="@+id/txtListaMarcaModelo"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/txtListaMarcaModelo" />
-            </TableRow>
-        </LinearLayout>
-    </RelativeLayout>
+    </LinearLayout>
 
 
     <LinearLayout
@@ -129,6 +122,7 @@
         android:layout_marginBottom="40dp"
         android:layout_marginEnd="8dp"
         android:clickable="true"
+        android:focusable="auto"
         app:backgroundTint="@color/colorPrimary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

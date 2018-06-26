@@ -1,5 +1,6 @@
 package com.example.root.seguradoraco.view;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -14,14 +15,15 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.root.seguradoraco.R;
+import com.example.root.seguradoraco.googleMaps.MapsActivity;
 
-public class NDrTesteActivity extends AppCompatActivity
+public class NDrSeguradoraActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ndr_teste);
+        setContentView(R.layout.activity_ndr_seguradora);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -57,7 +59,7 @@ public class NDrTesteActivity extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.ndr_teste, menu);
+        getMenuInflater().inflate(R.menu.ndr_seguradora, menu);
         return true;
     }
 
@@ -85,7 +87,13 @@ public class NDrTesteActivity extends AppCompatActivity
         if (id == R.id.apSearchCarro) {
             // Handle the search action
         } else if (id == R.id.navMapa) {
-
+            new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(view.getContext(), MapsActivity.class);
+                    view.getContext().startActivity(intent);
+                }
+            };
         } else if (id == R.id.navCalendario) {
 
         } else if (id == R.id.navOpcoes) {

@@ -1,22 +1,47 @@
 package com.example.root.seguradoraco.controller;
 
 
+import android.support.v7.app.AppCompatActivity;
+
 import com.example.root.seguradoraco.R;
 import com.example.root.seguradoraco.model.Carro;
+import com.example.root.seguradoraco.view.MainActivity;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ListaCarros {
 
-    private final Carro[] carros;
+    private List<Carro> carros = new ArrayList<Carro>();
 
-    private final int xmlMainActivity     = R.layout.activity_main;
-    private final int containerID         = R.id.rlListaCarros;
-    private final int txtListaPlaca       = R.id.txtListaPlaca;
-    private final int txtListaMarcaModelo = R.id.txtListaMarcaModelo;
-    private final int txtListaQtdEventos  = R.id.txtListaQtdEventos;
+    public ListaCarros(){
+        //nothing
+    }
 
 
-    public ListaCarros(Carro[] c){
+
+
+
+    // Gets
+    public List<Carro> getListCarro(){
+        return this.carros;
+    }
+
+
+
+    // Sets
+    public void setListCarro(List<Carro> c){
         this.carros = c;
+    }
 
+
+
+    // Methods
+    public void adicionarNoListView(String marca, String modelo, String placaInteira){
+
+    }
+
+    public void addCarro(Carro ca){
+        this.carros.add(ca);
     }
 }

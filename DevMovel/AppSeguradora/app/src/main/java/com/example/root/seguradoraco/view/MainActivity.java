@@ -10,12 +10,23 @@ import android.widget.Button;
 import android.widget.ListView;
 
 import com.example.root.seguradoraco.R;
+import com.example.root.seguradoraco.controller.ListaCarros;
+import com.example.root.seguradoraco.model.Carro;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button btnConfirmar, btnDeletar;
+    private ListaCarros listaCarros = new ListaCarros();
+
+    private final int txtPlacaLista       = R.id.txtListaPlaca;
+    private final int txtMarcaModeloLista = R.id.txtMarcaModeloLista;
+    private final int txtQtdEventosLista  = R.id.txtQtdEventosLista;
+    private final int idLvCarros          = R.id.lvCarros;
 
 
+    private Button btnConfirmar, btnDeletar;
 
 
     @Override

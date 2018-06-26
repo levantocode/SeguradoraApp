@@ -3,25 +3,28 @@ package com.example.root.seguradoraco.model;
 import java.io.Serializable;
 
 public class Carro implements Serializable {
+
+
     private int id;
     private int ano;
     private int totalEventos;
+
     private String placa;
     private String marca;
     private String modelo;
 
-    public Carro(String p, String ma, String mo){
+
+    public Carro(String p, String ma, String mo, int a){
         this.placa  = p;
         this.marca  = ma;
         this.modelo = mo;
-
+        this.ano    = a;
     }
+
 
 
     //Gets
-    public int getId(){
-        return this.id;
-    }
+    public int getId() { return this.id; }
 
     public int getAno(){
         return this.ano;
@@ -44,10 +47,9 @@ public class Carro implements Serializable {
     }
 
 
+
     //Sets
-    public void setId(int i){
-        this.id = i;
-    }
+    public void setId(int i) { this.id = i; }
 
     public void setAno(int a){
         this.ano = a;

@@ -14,10 +14,6 @@
         android:icon="@android:drawable/ic_dialog_map"
         android:title="@string/mapa" />
 
-    <item
-        android:id="@+id/navCalendario"
-        android:icon="@android:drawable/ic_menu_month"
-        android:title="Calendário" />
     <item android:title="@string/configura_o">
         <menu>
             <item

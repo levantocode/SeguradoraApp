@@ -9,7 +9,7 @@
     tools:openDrawer="start">
 
     <include
-        layout="@layout/app_bar_ndr_teste"
+        layout="@layout/app_bar_ndr_seguradora"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
@@ -19,7 +19,7 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
-        app:headerLayout="@layout/nav_header_ndr_teste"
-        app:menu="@menu/activity_ndr_teste_drawer" />
+        app:headerLayout="@layout/nav_header_ndr_seguradora"
+        app:menu="@menu/activity_ndr_seguradora_drawer" />
 
 </android.support.v4.widget.DrawerLayout>
